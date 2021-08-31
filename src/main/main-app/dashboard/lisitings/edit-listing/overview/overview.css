@@ -1,0 +1,75 @@
+.el-overview {
+  display: flex;
+  flex: 1;
+}
+.el-overview .lo-nav {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.lo-nav img {
+  width: 275px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  animation: skeleton-loading 1s linear infinite alternate;
+  min-width: 150px;
+}
+.lo-nav p {
+  width: 90%;
+  background-color: rgb(231, 231, 231);
+  padding: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+.lo-nav p:active {
+  width: 75%;
+  background-color: #0d6163;
+  color: #fff;
+}
+.lo-nav p.on:active {
+  width: 90%;
+}
+.lo-nav p.on {
+  background-color: #0d6163;
+  color: #fff;
+}
+.lo-content {
+  flex: 1;
+  max-height: 75vh;
+  display: flex;
+  overflow-y: auto;
+  margin-right: 10px;
+}
+.lo-content .overview.s1 {
+  animation: fade-in 0.3s;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.lo-content .overview {
+  animation: fade-in 0.4s;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.el-form.s4 .el-edit-btns p {
+  border-radius: 5px;
+  padding: 10px;
+}
+.lo-content .lo-description p {
+  font-weight: 300;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+.gallery__img {
+  width: 100%;
+  object-fit: contain;
+  margin: 0;
+  animation: skeleton-loading 1s linear infinite alternate;
+}

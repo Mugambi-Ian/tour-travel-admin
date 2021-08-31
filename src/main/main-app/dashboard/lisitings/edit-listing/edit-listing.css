@@ -1,0 +1,102 @@
+.el-body {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(71, 71, 71, 0.322);
+  animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  z-index: 10;
+}
+
+.el-form {
+  width: 90vw;
+  height: 75vh;
+  max-width: 650px;
+  background-color: #fff;
+  border-radius: 5px;
+  align-self: center;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.el-form .el-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  animation: fade-in 0.5s;
+}
+.el-form.s1 {
+  width: 75vw;
+  height: 75vh;
+  max-width: 650px;
+  min-height: 475px;
+}
+
+.el-form.s2 {
+  width: 90vw;
+  max-width: 850px;
+  height: 65vh;
+  min-height: 350px;
+}
+
+.el-form.s3 {
+  width: 60vw;
+  max-width: 550px;
+  min-width: 350px;
+  height: 70vh;
+}
+.el-form.s4 {
+  width: 90vw;
+  height: 90vh;
+  max-width: none;
+  min-width: none;
+}
+.el-close-btn {
+  align-self: flex-end;
+  height: 40px;
+  width: 40px;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.el-close-btn:active {
+  width: 50px;
+  height: 50px;
+  margin: -5px;
+}
+.el-proceed-btn {
+  margin: 0;
+  background-color: rgb(13, 146, 53);
+  color: #fff;
+  padding: 5px;
+  padding-bottom: 20px;
+  width: 150px;
+  text-align: center;
+}
+.el-form h1 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+.el-form p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+.el-form .p-input {
+  margin: 5px;
+  width: 98%;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

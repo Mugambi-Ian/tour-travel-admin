@@ -1,0 +1,52 @@
+.el-form .img-upload {
+  border-radius: 10px;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+.el-form .upload-img {
+  min-width: 300px;
+}
+
+.el-photo-content {
+  flex: 1;
+  margin-left: 20px;
+  border-left: 1px #b4b4b4 solid;
+  padding-left: 30px;
+}
+.el-photo-content p {
+  color: #000000;
+  font-weight: 300;
+}
+.el-form .posters {
+  display: grid;
+  overflow-y: auto;
+  max-height: 200px;
+  width: 350px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
+}
+
+.el-form .poster-card {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: 80px;
+  margin:5px;
+  padding: 10px;
+}
+.el-form .poster-card img.pc {
+  max-width: 70px;
+  max-height: 70px;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+#pic-btn.p2 img.pc {
+  min-width: 240px;
+  max-height: 60px;
+}
+
+.el-form .poster-card img.pc-close {
+  max-height: 25px;
+  max-width: 25px;
+  margin-bottom: -15px;
+  z-index: 1;
+  margin-left: -15px;
+}

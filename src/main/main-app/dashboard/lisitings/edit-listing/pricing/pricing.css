@@ -1,0 +1,43 @@
+.el-pricing-list {
+  max-height: 30vh;
+  flex: 1;
+  overflow-y: auto;
+}
+.price-card {
+  display: flex;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+  margin: 5px;
+}
+.price-card p {
+  flex: 1;
+  align-self: center;
+  text-align: center;
+}
+.price-card img {
+  width: 30px;
+  height: 30px;
+}
+.el-pricing {
+  display: flex;
+  max-height: 100px;
+  max-width: 100%;
+}
+.el-pricing img {
+  height: 45px;
+  width: 45px;
+  align-self: center;
+  margin: 5px auto;
+}
+.price-card img,
+.el-pricing img {
+  transition: all 0.3s;
+}
+.price-card img:active,
+.el-pricing img:active {
+  transform: scale(1.2);
+}
