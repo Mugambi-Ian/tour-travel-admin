@@ -40,14 +40,20 @@ export default class ListingOverview extends React.Component {
             {currentScreen === 1 ? (
               <div className="overview s1">
                 <div className="lo-description">
-                  {listing.description.split("\n").map((x, i) => {
-                    return <p>{x}</p>;
-                  })}
+                  {listing.description.split("\n") ? (
+                    listing.description.split("\n").map((x, i) => {
+                      return <p>{x}</p>;
+                    })
+                  ) : (
+                    <p>{listing.description}</p>
+                  )}
                 </div>
                 <div className="gallery">
-                  {listing.listingPhotos.map((x, i) => {
-                    return <img src={x} class="gallery__img" alt="" />;
-                  })}
+                  {listing.listingPhotos
+                    ? listing.listingPhotos.map((x, i) => {
+                        return <img src={x} class="gallery__img" alt="" />;
+                      })
+                    : ""}
                 </div>
               </div>
             ) : (

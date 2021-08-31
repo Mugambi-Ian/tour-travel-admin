@@ -4,6 +4,7 @@ import "./photos.css";
 export default class ListingPhotos extends React.Component {
   render() {
     const { CloseButton, listing, ProceedBtn, update } = this.props;
+    if (!listing.listingPhotos) listing.listingPhotos = [];
     return (
       <div className="el-content">
         <CloseButton /> <h1>Photos</h1>

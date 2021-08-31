@@ -64,7 +64,7 @@ export default class Bookings extends React.Component {
     return (
       <div className="booking-body">
         {bookings.listKeys().length === 0 ? (
-          <div className="no-bookings">
+          <div className="no-listings">
             <div id="animation">
               <Lottie
                 options={{

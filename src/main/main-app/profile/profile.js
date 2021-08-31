@@ -1,7 +1,10 @@
 import React from "react";
 import { validField, _auth, _database, _storage } from "../../../config";
 import "./profile.css";
-import { EditInput, ImageUploader } from "../../../assets/components/Input/input";
+import {
+  EditInput,
+  ImageUploader,
+} from "../../../assets/components/Input/input";
 
 export default class Profile extends React.Component {
   state = {
@@ -79,10 +82,10 @@ export default class Profile extends React.Component {
     else await _database.ref("admin/" + admin.adminId).update(admin);
     this.setState({ loading: false });
     this.props.closeToast();
+    this.props.showTimedToast("Save Successfull");
     await setTimeout(() => {
-      this.props.showTimedToast("Save Successfull");
-      this.props.closeEditing();
-    }, 500);
+      window.open("/", "_self");
+    }, 1500);
   }
 
   render() {
@@ -164,5 +167,3 @@ export default class Profile extends React.Component {
     );
   }
 }
-
-

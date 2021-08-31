@@ -31,33 +31,40 @@ export default class Home extends React.Component {
           v.set(i.key, val);
         });
         data.bookings = v;
-        let current = 0;
-        x.child("bookings").ref.on("value", () => {
-          if (loader[2]) {
-            loader[2] = false;
-            this.setState({ loader });
-          }
-        });
-        data.bookings.listKeys().forEach((val) => {
-          this.db.child(`bookings/${val}`).on("value", (j) => {
-            this.db
-              .child(`customers/${j.val().customerId}`)
-              .on("value", (p) => {
-                v.set(val, { ...j.val(), customer: p.val() });
-                data.bookings = v;
-                this.setState({ data });
-                const { loader } = this.state;
-                current = current + 1;
-                if (current >= data.bookings.length()) {
-                  loader[2] = true;
-                  this.setState({ loader });
-                }
-                console.log(data, loader, current);
-              });
+        if (data.bookings.length() === 0) {
+          loader[2] = true;
+          this.setState({ loader });
+        } else {
+          let current = 0;
+          x.child("bookings").ref.on("value", () => {
+            if (loader[2]) {
+              loader[2] = false;
+              this.setState({ loader });
+            }
           });
-        });
+          data.bookings.listKeys().forEach((val) => {
+            this.db.child(`bookings/${val}`).on("value", (j) => {
+              this.db
+                .child(`customers/${j.val().customerId}`)
+                .on("value", (p) => {
+                  v.set(val, { ...j.val(), customer: p.val() });
+                  data.bookings = v;
+                  this.setState({ data });
+                  const { loader } = this.state;
+                  current = current + 1;
+                  if (current >= data.bookings.length()) {
+                    loader[2] = true;
+                    this.setState({ loader });
+                  }
+                  console.log(data, loader, current);
+                });
+            });
+          });
+        }
       } else {
-        this.setState({ currentScreen: "profile" });
+        loader[2] = true;
+        loader[1] = true;
+        this.setState({ loader, currentScreen: "profile" });
       }
       loader[0] = true;
       this.setState({ loader });
@@ -66,25 +73,28 @@ export default class Home extends React.Component {
       .child("admin/" + _auth.currentUser.uid + "/destinations")
       .on("value", async (x) => {
         const { loader, data } = this.state;
-
         const v = new MyDictionary();
         const y = [];
         x.forEach((i) => {
           y.push(i.val());
         });
-        for (let i = 0; i < y.length; i++) {
-          const z = y[i];
-          await this.db.child("destinations/" + z).on("value", (o, i) => {
-            v.set(o.key, o.val());
-            data.listings = v;
-            this.setState({ loader, data });
-          });
-          if (i + 1 >= y.length) {
-            loader[1] = true;
-            data.listings = v;
-            this.setState({ loader, data });
+        if (y.length === 0) {
+          loader[1] = true;
+          this.setState({ loader });
+        } else
+          for (let i = 0; i < y.length; i++) {
+            const z = y[i];
+            await this.db.child("destinations/" + z).on("value", (o, i) => {
+              v.set(o.key, o.val());
+              data.listings = v;
+              this.setState({ loader, data });
+            });
+            if (i + 1 >= y.length) {
+              loader[1] = true;
+              data.listings = v;
+              this.setState({ loader, data });
+            }
           }
-        }
       });
   }
   componentWillUnmount() {
